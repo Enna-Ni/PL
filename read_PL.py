@@ -48,7 +48,7 @@ def calc_sec(filename, path):
                     # plt.show()
                     np.save(path + str(second), img)
                     # print()
-                    print("file "+ 'ser_2/img_2/' + str(second) + " written")
+                    print("file "+ save_path, str(second) + " written")
                     
                     print(line, datetime.datetime.now())
                                     
@@ -90,22 +90,25 @@ except:
 data_path = curr_dir + "/Data/"
 
 file_list = sorted(os.listdir(data_path))
-ser1_list = file_list[:5]
-ser2_list = file_list[6:]
+ser1_list = file_list[:7]
+ser2_list = file_list[7:]
+
+print(ser1_list)
+print(ser2_list)
 
 # ser_1
-for i in range(1, len(ser1_list) + 1):
-    read_path = data_path + ser1_list[i]
+for i in range(6, len(ser1_list) + 1):
+    read_path = data_path + ser1_list[i-1]
     try:
         save_path = curr_dir + "/ser_1/img"+ str(i) + "/"
         os.makedirs(save_path)
     except FileExistsError:
         pass
-    calc_sec(read_path, save_path)
+    # calc_sec(read_path, save_path)
 
 # ser_2
 for i in range(1, len(ser2_list) + 1):
-    read_path = data_path + ser2_list[i]
+    read_path = data_path + ser2_list[i-1]
     try:
         save_path = curr_dir + "/ser_2/img"+ str(i) + "/"
         os.makedirs(save_path)
